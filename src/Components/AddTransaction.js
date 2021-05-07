@@ -37,62 +37,62 @@ async function makeTransaction() {
 
 export default class AddTransactionPage extends Component {
 
-    render() {
-        return (
-          <div className="formCenter">
-            <form className="formField" onSubmit={this.makeTransaction}>
-              <h3>Make Payment</h3>
-    
-              <div className="form-group">
-                <label>Payee</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="Pay to"
-                  onChange={(e) => (this.inputPayeeID = e.target.value)}
-                />
-              </div>
-    
-              <div className="form-group">
-                <label>Expense Category</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Expense type"
-                  onChange={(e) => (this.inputExpenseCat = e.target.value)}
-                />
-              </div>
+  render() {
+      return (
+        <div className="formCenter">
+          <form className="formField" onSubmit={this.makeTransaction}>
+            <h3>Make Payment</h3>
+  
+            <div className="form-group">
+              <label>Payee</label>
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Pay to"
+                onChange={(e) => (this.inputPayeeID = e.target.value)}
+              />
+            </div>
+  
+            <div className="form-group">
+              <label>Expense Category</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Expense type"
+                onChange={(e) => (this.inputExpenseCat = e.target.value)}
+              />
+            </div>
 
-              <div className="form-group">
-                <label>Amount</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="$5"
-                  onChange={(e) => (this.inputAmount = e.target.value)}
-                />
-              </div>
-              <div className="form-group">
-                <label>eGift</label>
-                <input
-                  type="checkbox"
-                  className="form-control"
-                  placeholder="$5"
-                  onChange={(e) => (this.inputEGift = e.target.value)}
-                />
-              </div>
-              <div className="form-group">
-                <label>Message</label>
-                <input
-                  type="Text"
-                  className="form-control"
-                  placeholder="Message to recipient"
-                  onChange={(e) => (this.inputMessage = e.target.value)}
-                />
-              </div>
-              <button className="btn btn-primary btn-block">Pay</button>
-            </form>
-          </div>
-        );
-    }
+            <div className="form-group">
+              <label>Amount</label>
+              <input
+                type="number"
+                className="form-control"
+                placeholder="$5"
+                onChange={(e) => (this.inputAmount = e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label>eGift</label>
+              <input
+                type="checkbox"
+                className="form-control"
+                placeholder="$5"
+                onChange={(e) => (this.inputEGift = e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label>Message</label>
+              <input
+                type="Text"
+                className="form-control"
+                placeholder="Message to recipient"
+                onChange={(e) => (this.inputMessage = e.target.value)}
+              />
+            </div>
+            <button className="btn btn-primary btn-block">Pay</button>
+          </form>
+        </div>
+      );
+  }
 }
