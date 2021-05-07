@@ -49,6 +49,12 @@ const ViewAccountDetails = () =>
         )
     }
 
+    //Navigation Function
+    const NavigateToNextPage = (id) =>
+    {
+        console.log(id);
+    }
+
     //Data to input to retrieve Json data from Database
     const custID = 4;
     const accountKey = 'lzdsqj5s-zqwh-m0hr-rrfz-3cvbsqb33m2';
@@ -128,7 +134,7 @@ const ViewAccountDetails = () =>
             //Loop through the array using Javascript map() function
             retrievedInfo.map((info) => (
                 <div key={info.bankInfoID} className = 'container'
-                     style = {
+                    style = {
                         {
                             marginLeft : 10,
                             marginTop : 10,
@@ -142,28 +148,29 @@ const ViewAccountDetails = () =>
                             backgroundColor : "lightgrey",
                             width : 400,
                         }
-                     }
-                     
-                     onClick = {
-                         () => Click(info)
-                     }>
+                    }
+                    >
+                    <div key="AccountDetailsMainBody"
+                        onClick = {
+                            () => Click(info)
+                    }>
                     <p style = {{fontWeight : 200,
                                 fontSize : 25,
                                 margin : 0,
                                 marginBottom : 2 }}>{info.accountName}</p>
                     <i style = {{fontSize : 14,
-                                 marginBottom : 2}}>{info.accountNumber}</i><br/>
-                    <div style = {{fontSize : 10,
-                                   float : "left",
-                                   paddingTop : 5,
-                                   marginRight : 5}}>SGD</div>
-                    <div style = {{fontSize : 15}}>{info.availableBal}</div>
+                                marginBottom : 2}}>{info.accountNumber}</i><br/>
+                    <div key="leftAccInfo" style = {{fontSize : 10,
+                                float : "left",
+                                paddingTop : 5,
+                                marginRight : 5}}>SGD</div>
+                    <div key="rightAccInfo" style = {{fontSize : 15}}>{info.availableBal}</div>
 
                     {
                         //Displaying History
                         info.display ? 
                         (
-                        <div>
+                        <div key="DisplayingHistory">
                             <hr/>
                             <p style = {{fontWeight : 200,
                                     fontSize : 15,
@@ -187,20 +194,20 @@ const ViewAccountDetails = () =>
                                 transactionHistory.map((th) => (
                                     th.Account === info.accountName ? (
                                         <div>
-                                            <div style = {{
+                                            <div key="thLeft" style = {{
                                                 fontSize : 14,
                                                 margin : 0,
                                                 marginBottom : 2,
                                                 float : "left" }}>{th.Date}</div>
 
-                                            <div style = {{
+                                            <div key="thRight" style = {{
                                                 fontSize : 14,
                                                 margin : 0,
                                                 marginBottom : 2,
                                                 float : "right" }}>${th.Amount}</div>
                                             <br/>
                                         </div>
-                                     ) : (" ")
+                                    ) : (" ")
                                     
                                 ))
                             }
@@ -208,6 +215,19 @@ const ViewAccountDetails = () =>
                         ) : 
                         (' ')
                     }
+                    </div>
+                    
+                    {/*Button to transit to different pages*/}
+                    <div key="accountDetailsButtons" style = {{marginBottom : 30}}>
+                        <button style = {{
+                            marginTop : 10,
+                            marginBottom : 10,
+                            float :"left"}} onClick={() => NavigateToNextPage(info.bankInfoID)}>Make Payment</button>
+                        <button style = {{
+                            marginTop : 10,
+                            marginBottom : 10,
+                            float :"right"}} onClick={() => NavigateToNextPage(info.bankInfoID)}>Transaction History</button>
+                    </div>
                 </div>
             ))
         }
