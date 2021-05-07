@@ -1,34 +1,51 @@
-import React, { Component } from "react";
-export default class LoginPage extends Component {
-  render() {
-    return (
-      <div className="formCenter">
-        <form className="formField" onSubmit={this.handleSubmit}>
-          <h3>Login</h3>
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { Button, Card, Navbar } from "react-bootstrap";
 
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Email"
-              onChange={(e) => (this.email = e.target.value)}
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Password"
-              onChange={(e) => (this.password = e.target.value)}
-            />
-          </div>
-
-          <button className="btn btn-primary btn-block">Login</button>
-        </form>
+const Navbar = () => {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar-brand">Expense Tracker</nav>
+      <div className="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/ViewTransaction"
+            >
+              View Transaction
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/AddTransaction"
+            >
+              Add Transaction
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="ViewAccountDetails"
+            >
+              View Account Details
+            </NavLink>
+          </li>
+        </ul>
       </div>
-    );
-  }
-}
+      <ul className="navbar-nav justify-content-end">
+        <li className="nav-item">
+          <NavLink className="nav-link" activeClassName="active" to="/Logout">
+            Logout
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;
