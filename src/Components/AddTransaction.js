@@ -48,7 +48,7 @@ export default class AddTransactionPage extends Component {
               <input
                 type="number"
                 className="form-control"
-                placeholder="Pay to"
+                placeholder="Number to pay to"
                 onChange={(e) => (this.inputPayeeID = e.target.value)}
               />
             </div>
