@@ -38,7 +38,8 @@ const ViewAccountDetails = () =>
                 });
 
                 const data = await res.json();
-                console.log(data[0].accountNumber);
+                console.log(data);
+                setRetrieveInfo(data);
                 setCurrentNumber(data[0].accountNumber);
             }
 
@@ -48,9 +49,39 @@ const ViewAccountDetails = () =>
     )
 
     return (
-    <div>
-        <h2>Current Balance : {currentNumber}</h2>
-    </div>
+    <>
+        {
+            //Loop through the array using Javascript map() function
+            retrievedInfo.map((info) => (
+                <div key={info.bankInfoID} className = 'container'
+                     style = {
+                        {
+                            marginLeft : 10,
+                            marginTop : 10,
+                            padding : 2,
+                            paddingLeft : 10,
+                            paddingBottom : 10,
+                            borderStyle : "solid",
+                            borderWidth : 2,
+                            //borderLeft : "6px solid red",
+                            backgroundColor : "lightgrey",
+                            width : 400,
+                        }
+                     }>
+                    <p style = {{fontWeight : 200,
+                                fontSize : 25,
+                                margin : 0,
+                                marginBottom : 2 }}>{info.accountName}</p>
+                    <i style = {{fontSize : 14}}>{info.accountNumber}</i><br/>
+                    <div style = {{fontSize : 10,
+                                   float : "left",
+                                   paddingTop : 5,
+                                   marginRight : 5}}>SGD</div>
+                    <div style = {{fontSize : 15}}>{info.availableBal}</div>
+                </div>
+            ))
+        }
+    </>
     )
 }
 
