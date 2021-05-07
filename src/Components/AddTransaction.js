@@ -23,10 +23,10 @@ async function makeTransaction() {
   body: JSON.stringify({
       custID: givenCustID ,
       accountKey: givenAccountKey,
-      payeeID: window.inputPayeeID,
+      payeeID: parseInt(window.inputPayeeID),
       expenseCat: window.inputExpenseCat,
-      amount: window.inputAmount,
-      eGift: window.inputEGift,
+      amount: parseInt(window.inputAmount),
+      eGift: false,
       message: window.inputMessage
   })
   }).then(response => {
