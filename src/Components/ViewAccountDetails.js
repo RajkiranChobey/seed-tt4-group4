@@ -4,21 +4,26 @@ const ViewAccountDetails = () =>
 {
     //Array Data
     const [retrievedInfo, setRetrieveInfo] = useState([]);
-    //Current Account
-    //const [currentNumber, setCurrentNumber] = useState(0);
-    //const [currentBal, setCurrentBal] = useState(0);
-    //const [currentID, setCurrentID] = useState(0);
-
-    ////Multiplier Account
-    //const [multiplierNumber, setMultiplierNumber] = useState(0);
-    //const [multiplierBal, setMultiplierBal] = useState(0);
-    //const [multiplierID, setMultiplierID] = useState(0);
-
-    ////Saving Account
-    //const [savingNumber, setSavingNumber] = useState(0);
-    //const [savingBal, setSavingBal] = useState(0);
-    //const [savingID, setSavingID] = useState(0);
+    const [transactionHistory, setTransactionHistory] = useState([
+        {
+            "Account" : "Current Account",
+            "Date" : "07-03-2021",
+            "Amount" : 10.00
+        },
+        {
+            "Account" : "Multiplier Account",
+            "Date" : "27-04-2021",
+            "Amount" : -80.00
+        },
+        {
+            "Account" : "Saving Account",
+            "Date" : "27-04-2021",
+            "Amount" : 70.00
+        }
+    ]);
     
+    //On Click function
+    var display = false;
     const Click = (info) =>
     {
         setRetrieveInfo(
@@ -28,10 +33,9 @@ const ViewAccountDetails = () =>
         )
     }
 
-    //Data to input
+    //Data to input to retrieve Json data from Database
     const custID = 4;
     const accountKey = 'lzdsqj5s-zqwh-m0hr-rrfz-3cvbsqb33m2';
-    var display = false;
 
     //Inputting the data to fetch the information
     const fetchData = async () => 
@@ -110,22 +114,44 @@ const ViewAccountDetails = () =>
                                     margin : 0,
                                     marginBottom : 2 }}>Transaction History</p>
 
-                            <table style={{
-                                textAlign : "left",
-                                fontSize : 14
-                            }}>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Amount</th>
-                                </tr>
-                                <tr>
-                                    <td>07/05/2021</td>
-                                    <td>+$1.00</td>
-                                </tr>
-                            </table>
+                            <b style = {{
+                                    fontSize : 14,
+                                    margin : 0,
+                                    marginBottom : 2 }}>Date</b>
+
+                            <b style = {{
+                                    fontSize : 14,
+                                    margin : 0,
+                                    marginBottom : 2,
+                                    float : "right" }}>Amount</b>
+                            
+                            <br/>
+
+                            {
+                                transactionHistory.map((th) => (
+                                    th.Account === info.accountName ? (
+                                        <div>
+                                            <div style = {{
+                                                fontSize : 14,
+                                                margin : 0,
+                                                marginBottom : 2,
+                                                float : "left" }}>{th.Date}</div>
+
+                                            <div style = {{
+                                                fontSize : 14,
+                                                margin : 0,
+                                                marginBottom : 2,
+                                                float : "right" }}> {th.Amount > 0 ? ('+') : ('-')} ${th.Amount < 0 ? -th.Amount : th.Amount}</div>
+
+                                            <br/>
+                                        </div>
+                                     ) : (" ")
+                                    
+                                ))
+                            }
                         </div>
                         ) : 
-                        (" ")
+                        (' ')
                     }
                 </div>
             ))
