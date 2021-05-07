@@ -1,5 +1,4 @@
 import "./App.css";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BrowserRouter as Router,
@@ -16,15 +15,19 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Login}></Route>
-          <Route exact path="/Login" component={Login}></Route>
-          <Route exact path="/BuySellAsset" component={ViewTransaction}></Route>
+          <Route path="/Login" component={Login}></Route>
+          <Route path="/ViewTransaction" component={ViewTransaction}></Route>
           <Route
             exact
-            path="/TransactionHistory"
+            path="/ViewAccountDetails"
             component={ViewAccountDetails}
           ></Route>
           <Route exact path="/Logout" component={Logout}></Route>
-          <Route exact path="/UserInfo" component={AddTransaction}></Route>
+          <Route
+            exact
+            path="/AddTransaction"
+            component={AddTransaction}
+          ></Route>
         </Switch>
       </div>
     </Router>
