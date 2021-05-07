@@ -8,8 +8,8 @@ import AddTransactionPage from './AddTransaction';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AddTransactionPage /><br></br>
     <ViewAccountDetails /><br></br>
+    <AddTransactionPage /><br></br>
     <ViewTransaction />
   </React.StrictMode>,
   document.getElementById('root')

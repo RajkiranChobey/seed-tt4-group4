@@ -1,33 +1,6 @@
 import './App.css';
 import {useEffect, useState} from "react";
 
-// function getDate(UTC){
-//   var d = new Date(UTC);
-//   return d.getDate
-// }
-
-// function CashSent(transactions){
-//   let cashOut = 0.0;
-//   transactions.forEach(transaction => {
-//     if(transaction.payeeID === 4){
-//       cashOut += transaction.amount;
-//     }
-//   });
-//   console.log("Cash Out: ",cashOut);
-//   return cashOut;
-// }
-
-// function CashRcvd(transactions){
-//   let cashIn = 0.0;
-//   transactions.forEach(transaction => {
-//     if(transaction.payeeID != 4){
-//       cashIn += transaction.amount;
-//     }
-//   });
-//   console.log("Cash In", cashIn);
-//   return cashIn;
-// }
-
 function GetTransaction() {
   const [transactions, setTransactions] = useState("");
 
@@ -59,12 +32,6 @@ function TransactionList(){
   let listItems;
   const transactions = GetTransaction();
   if(transactions) {
-    // if(transaction.payeeID === 4){
-    //   transaction.type = "Out";
-    // }
-    // else{
-    //   transaction.type = "In";
-    // }
     listItems = transactions.map((transaction) => 
       <li key="{transaction.datetime}" className="transaction-item">
         <div>Date: {transaction.datetime}</div>
