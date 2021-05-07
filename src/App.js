@@ -9,7 +9,8 @@ import {
 } from "react-router-dom";
 
 //Components
-import Login from "./components/Login";
+import Login from "./Components/Login";
+import Logout from "./Components/Logout";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Login}></Route>
+          <Route exact path="/Logout" component={Logout}></Route>
         </Switch>
       </div>
     </Router>
