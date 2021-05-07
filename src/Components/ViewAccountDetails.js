@@ -2,6 +2,21 @@ import {useState, useEffect} from "react";
 
 const ViewAccountDetails = () => 
 {
+    //User Data
+    const [retrievedUserInfo, setRetrievedUserInfo] = useState(
+        {
+            "custID" : 4,
+            "FirstName" : "Robert",
+            "LastName" : "Dotson",
+            "Gender" : "Male",
+            "Age" : 49,
+            "Address" : "1139 Kerr Rest Apt. 299 Mitchellchester, GA 24882",
+            "NRIC" : "S7270409I",
+            "Phone Number" : "95849530",
+            "Email" : "robert@yahoo.com"
+        }
+    )
+
     //Array Data
     const [retrievedInfo, setRetrieveInfo] = useState([]);
     const [transactionHistory, setTransactionHistory] = useState([
@@ -91,7 +106,17 @@ const ViewAccountDetails = () =>
         {/*This is currently hardcoded but can be changed to display current logged in user*/}
         <h1 style = {
             {marginLeft : 10}
-        }>Hello Robert Doston</h1>
+        }>Hello {retrievedUserInfo.FirstName + " " + retrievedUserInfo.LastName}</h1>
+        <p style = {
+            {marginLeft : 10}
+        }>
+            Gender       : {retrievedUserInfo.Gender}          <br/>
+            Age          : {retrievedUserInfo.Age}             <br/>
+            Address      : {retrievedUserInfo.Address}         <br/>
+            NRIC         : {retrievedUserInfo.NRIC}            <br/>
+            Phone Number : {retrievedUserInfo["Phone Number"]} <br/>
+            Email        : {retrievedUserInfo.Email}           <br/>
+        </p>
 
         <hr/>
 
