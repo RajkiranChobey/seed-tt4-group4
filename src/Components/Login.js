@@ -17,11 +17,7 @@ export default class LoginPage extends Component {
       }
     });
 
-  render() {
-    return (
-      <div className="formCenter">
-        <form className="formField" onSubmit={this.handleSubmit}>
-          <h3>Login</h3>
+  
 
           <div className="form-group">
             <label>Email</label>
