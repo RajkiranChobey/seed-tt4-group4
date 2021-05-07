@@ -1,41 +1,41 @@
+import React, { Component } from "react";
+
 //start of varaibles used for testing
 const givenXApiKey = 'HGaEmsRTs92KWV1ymCFucerRBGYDzr52rtR3Wpg0';
 const givenCustID = 4 ;
 const givenAccountKey = "lzdsqj5s-zqwh-m0hr-rrfz-3cvbsqb33m2";
 const url = "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/add"
 //end of variables used for testing
-var inputPayeeID=React.useRef(givenCustID),inputExpenseCat=React.useRef(''),inputPayeeID=React.useRef(givenCustID),inputExpenseCat=React.useRef(''),inputAmount=React.useRef(0),inputEGift=React.useRef(false),inputMessage=React.useRef("");
+var inputPayeeID,inputExpenseCat,inputPayeeID,inputExpenseCat,inputAmount,inputEGift,inputMessage;
 
-import React, { Component } from "react";
+async function makeTransaction() {
+  const response = await fetch(url, {
+  method: 'POST',
+  headers: {
+      'x-api-key': givenXApiKey
+  },
+  body: JSON.stringify({
+      custID: givenCustID ,
+      accountKey: givenAccountKey,
+      payeeID: inputPayeeID,
+      expenseCat: inputExpenseCat,
+      amount: inputAmount,
+      eGift: inputEGift,
+      message: inputMessage
+  })
+  }).then(response => {
+  if (response.ok) {
+      return response.json();
+  }
+  throw new Error('Request failed.');
+  },
+  networkError => console.log(networkError.message)
+  ).then(jsonResponse => {
+      console.log(jsonResponse)
+  });
+};
 
 export default class AddTransactionPage extends Component {
-
-    async makeTransaction() {
-        const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'x-api-key': givenXApiKey
-        },
-        body: JSON.stringify({
-            custID: givenCustID ,
-            accountKey: givenAccountKey,
-            payeeID: inputPayeeID,
-            expenseCat: inputExpenseCat,
-            amount: inputAmount,
-            eGift: inputEGift,
-            message: inputMessage
-        })
-        }).then(response => {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error('Request failed.');
-        },
-        networkError => console.log(networkError.message)
-        ).then(jsonResponse => {
-            console.log(jsonResponse)
-        });
-    };
 
     render() {
         return (
