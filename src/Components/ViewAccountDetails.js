@@ -8,10 +8,10 @@ export default class ViewAccountDetails extends Component {
   }
 
   componentDidMount() {
-    const xapikey = "HGaEmsRTs92KWV1ymCFucerRBGYDzr52rtR3Wpg0";
+    const xApiKey = "HGaEmsRTs92KWV1ymCFucerRBGYDzr52rtR3Wpg0";
     const axiosConfig = {
       headers: {
-        "x-api-key": xapikey,
+        "x-api-key": xApiKey,
       },
     };
     const body = {
