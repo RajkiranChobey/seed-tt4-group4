@@ -27,10 +27,10 @@ function GetTransaction() {
   if(transactions) {
     listItems = transactions.map((transaction) => 
       <li key="{transaction.datetime}">
-        <div>Date of Transaction: {transaction.datetime}</div>
-        <div>Customer ID: {transaction.custID}</div>
-        <div>Amount: {transaction.amount}</div>
+        <div>Amount: {transaction.datetime}</div>
+        <div>Amount: ${transaction.amount}</div>
         <div>Message: {transaction.message}</div>
+        <div>Expense Category: {transaction.expenseCat}</div>
         <div>Payee ID: {transaction.payeeID}</div>
       </li>
     )
