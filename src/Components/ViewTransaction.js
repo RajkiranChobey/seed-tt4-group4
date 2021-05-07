@@ -8,31 +8,23 @@ import {useEffect, useState} from "react";
 
 function CashSent(transactions){
   let cashOut = 0.0;
-  let cashIn = 0.0;
   transactions.forEach(transaction => {
     if(transaction.payeeID === 4){
       cashOut += transaction.amount;
     }
-    else{
-      cashIn += transaction.amount;
-    }
   });
-  console.log("Cash Out",cashOut);
+  console.log("Cash Out: ",cashOut);
   return cashOut;
 }
 
 function CashRcvd(transactions){
-  let cashOut = 0.0;
   let cashIn = 0.0;
   transactions.forEach(transaction => {
-    if(transaction.payeeID === 4){
-      cashOut += transaction.amount;
-    }
-    else{
+    if(transaction.payeeID != 4){
       cashIn += transaction.amount;
     }
   });
-  console.log("Cash In",cashIn);
+  console.log("Cash In", cashIn);
   return cashIn;
 }
 
