@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Link,
+  Route,
+  Switch,
+} from "react-router-dom";
+
+//Components
+import Login from "./Components/Login";
+import Logout from "./Components/Logout";
+import NavBar from "./Components/NavBar";
+import userSession from "./Components/userSession";
+import ViewAccountDetails from "./Components/ViewAccountDetails";
+import ViewTransaction from "./Components/ViewTransaction";
+import AddTransaction from "./Components/AddTransaction";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route exact path="/" component={Login}></Route>
+          <Route exact path="/Logout" component={Logout}></Route>
+          <Route exact path="/NavBar" component={NavBar}></Route>
+          <Route exact path="/userSession" component={userSession}></Route>
+          <Route
+            exact
+            path="/ViewAccountDetails"
+            component={ViewAccountDetails}
+          ></Route>
+          <Route
+            exact
+            path="/ViewTransaction"
+            component={ViewTransaction}
+          ></Route>
+          <Route
+            exact
+            path="/AddTransaction"
+            component={AddTransaction}
+          ></Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
