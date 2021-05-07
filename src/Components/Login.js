@@ -17,15 +17,30 @@ export default class Login extends Component {
       }
     });
 
-    axios
-      .post("http://localhost:3000/login", data)
-      .then((res) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    const xApiKey='mcOtxKkyOR4OwrbGK0Czq8HRmlMcsQ2G1Er2jfy7';
+    const axiosConfig= {​​​​​​​​
+     headers: {​​​​​​​​
+    'x-api-key': xApiKey
+     }​​​​​​​​
+    
+    
+     }​​​​​​​​
+    const body={​​​​​​​​
+    'username': "Group4",
+    'password': "RDVdlFcb2W3H3i_"
+    
+     }​​​​​​​​
+    axios.post('https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/login', body, axiosConfig).then(
+    res=> {​​​​​​​​
+    console.log(res)
+     }​​​​​​​​
+    
+     ).catch(
+    err=> {​​​​​​​​
+    console.log(err);
+     }​​​​​​​
+  }
+
 
   render() {
     return (
