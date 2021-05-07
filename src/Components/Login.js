@@ -26,9 +26,7 @@ export default class LoginPage extends Component {
             />
           </div>
 
-          <button className="btn btn-primary btn-block">Login</button>
-        </form>
-      </div>
+          
     );
   }
 }
