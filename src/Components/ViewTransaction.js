@@ -85,6 +85,9 @@ function TransactionList(){
 function TransAnal(){
   let cashOut = 0.0;
   let cashIn = 0.0;
+  let shopping = 0.0;
+  let transport = 0.0;
+  let others = 0.0;
   const transactions = GetTransaction();
   console.log(cashIn,cashOut);
 
@@ -95,13 +98,25 @@ function TransAnal(){
         else{
           cashIn += transaction.amount;
         }
+    if(transaction.expenseCat === "Shopping"){
+      shopping += transaction.amount;
+    }
+    else if(transaction.expenseCat === "Transport"){
+      transport += transaction.amount;
+    }
+    else if(transaction.expenseCat === "Others"){
+      others += transaction.amount;
+    }
   }
-
+  
   console.log(cashIn,cashOut);
   return (
     <div>
-      Cash Sent: {cashOut}<br></br>
-      Cash Received: {cashIn}
+      Cash Sent: ${cashOut.toFixed(2)}<br></br>
+      Cash Received: ${cashIn.toFixed(2)}<br></br>
+      Shopping: ${shopping.toFixed(2)}<br></br>
+      Transport: ${transport.toFixed(2)}<br></br>
+      Others: ${others.toFixed(2)}<br></br>
     </div>
   )
 }
