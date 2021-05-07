@@ -1,8 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-<<<<<<< HEAD
-export default class Login extends Component {
-=======
 import userSession from "./Components/userSession";
 
 export default class Login extends Component {
@@ -30,7 +27,6 @@ export default class Login extends Component {
       });
   };
 
->>>>>>> Login.js
   render() {
     return (
       <div className="formCenter">
