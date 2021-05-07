@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Button, Card, Navbar } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 
 const Navbar = () => {
   return (
