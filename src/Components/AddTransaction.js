@@ -32,6 +32,7 @@ async function makeTransaction() {
   networkError => console.log(networkError.message)
   ).then(jsonResponse => {
       console.log(jsonResponse)
+      return jsonResponse
   });
 };
 
@@ -40,7 +41,7 @@ export default class AddTransactionPage extends Component {
   render() {
       return (
         <div className="formCenter">
-          <form className="formField" onSubmit={this.makeTransaction}>
+          <form className="formField" onSubmit={makeTransaction}>
             <h3>Make Payment</h3>
   
             <div className="form-group">
