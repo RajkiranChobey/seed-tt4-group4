@@ -50,9 +50,21 @@ const ViewAccountDetails = () =>
     }
 
     //Navigation Function
-    const NavigateToNextPage = (id) =>
+    const NavigateToNextPage = (method, id) =>
     {
-        console.log(id);
+        switch(method)
+        {
+            case "Payment":
+                {
+                    console.log("Payment" + id);
+                    break;
+                }
+            case "Transaction":
+                {
+                    console.log("Transaction" + id);
+                    break;
+                }
+        };
     }
 
     //Data to input to retrieve Json data from Database
@@ -222,11 +234,11 @@ const ViewAccountDetails = () =>
                         <button style = {{
                             marginTop : 10,
                             marginBottom : 10,
-                            float :"left"}} onClick={() => NavigateToNextPage(info.bankInfoID)}>Make Payment</button>
+                            float :"left"}} onClick={() => NavigateToNextPage("Payment", info.bankInfoID)}>Make Payment</button>
                         <button style = {{
                             marginTop : 10,
                             marginBottom : 10,
-                            float :"right"}} onClick={() => NavigateToNextPage(info.bankInfoID)}>Transaction History</button>
+                            float :"right"}} onClick={() => NavigateToNextPage("Transaction", info.bankInfoID)}>Transaction History</button>
                     </div>
                 </div>
             ))
