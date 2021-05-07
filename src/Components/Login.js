@@ -18,27 +18,29 @@ export default class Login extends Component {
     });
     
     componentDidMount(){
-    const xApiKey='HGaEmsRTs92KWV1ymCFucerRBGYDzr52rtR3Wpg0';
+    const xApiKey = 'HGaEmsRTs92KWV1ymCFucerRBGYDzr52rtR3Wpg0';
     const axiosConfig = {​​​​​​​​
       headers: {​​​​​​​​
-    'x-api-key': xApiKey
-     }​​​​​​,
-    };
+    'x-api-key': xApiKey,
+     }​​​​​​
+    }
+  };
      ​​​​​​​​
     const body = {​​​​​​​​
-    'username': "Group4",
-    'password': "2dWa&s5LS4OVlRD"
-     }
+    username: "Group4",
+    password: "2dWa&s5LS4OVlRD",
+     };
      ​​​​​​​​
-    axios.post('https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/login', body, axiosConfig).then(
-    res=> {​​​​​​​​console.log(res)}​​​​​​​​
+    axios.post('https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/login', body, axiosConfig)
+    .then((res)=> {​​​​​​​​console.log(res)}​​​​​​​​
     
      ).catch(err => {​​​​​​​​
-    console.log(err);
-     })​​​​​​​
+    console.log(err)
+     });​​​​​​​
     }
 
-  render() {
+
+  render(){
     return (
       <div className="formCenter">
         <form className="formField" onSubmit={this.handleSubmit}>
@@ -84,7 +86,6 @@ export default class Login extends Component {
           <button className="formFieldButton">Login</button>{" "}
         </form>
       </div>
-    )
-  };
-}
+    );
+  }
 }
