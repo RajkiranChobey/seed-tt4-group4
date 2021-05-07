@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { Component } from "react";
-import playerDatabase from "./playerDatabase";
+import userSession from "./Components/userSession";
 
-export default class LoginPage extends Component {
+export default class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -11,7 +11,7 @@ export default class LoginPage extends Component {
       password: this.password,
     };
 
-    playerDatabase.forEach((element) => {
+    userSession.forEach((element) => {
       if (element.email === data.email && element.password === data.password) {
         console.log("Match");
       }
@@ -38,22 +38,39 @@ export default class LoginPage extends Component {
                 type="email"
                 id="email"
                 className="formFieldLabel"
-                placeholder="email"
+                placeholder="Enter your Email"
+                name="email"
                 onChange={(e) => (this.email = e.target.value)}
               />
             </label>
           </div>
-          <div className="form-group">
-            <label>Password</label>
+          <div className="formField">
+            <label className="formFieldLabel" htmlFor="password">
+              Password
+            </label>
             <input
               type="password"
-              className="form-control"
-              placeholder="Password"
+              id="password"
+              className="formFieldLable"
+              name="password"
+              placeholder="Enter your password"
               onChange={(e) => (this.password = e.target.value)}
             />
           </div>
-
-          <button className="btn btn-primary btn-block">Login</button>
+          <div className="formField">
+            <label className="formFieldCheckbox">
+              <input
+                className="formFieldCheckbox"
+                type="checkbox"
+                name="hasAgreed"
+                value={this.state.hasAgreed}
+                onChange={this.handleChange}
+              />{" "}
+              Remember Me{" "}
+            </label>
+          </div>
+          <div className="formField"></div>
+          <button className="formFieldButton">Login</button>{" "}
         </form>
       </div>
     );

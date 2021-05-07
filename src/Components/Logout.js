@@ -1,9 +1,9 @@
-import "../../App.css";
+import "../App.css";
 import React from "react";
 
 import { NavLink } from "react-router-dom";
 
-export default class PersonDelete extends React.Component {
+export default class LogOut extends React.Component {
   handleChange = (event) => {};
   handleSubmit = (event) => {
     event.preventDefault();
@@ -11,9 +11,9 @@ export default class PersonDelete extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="formCenter" onSubmit={this.handleSubmit}>
         <h1>Successfully logged out</h1>
-        <button type="button" class="btn btn-secondary btn-lg">
+        <button class="formFieldButton">
           <NavLink className="nav-link" activeClassName="active" to="/Login">
             Login
           </NavLink>
