@@ -25,7 +25,7 @@ export default class Login extends Component {
      }​​​​​​,
     };
      ​​​​​​​​
-    const body={​​​​​​​​
+    const body = {​​​​​​​​
     'username': "Group4",
     'password': "2dWa&s5LS4OVlRD"
      }
@@ -33,9 +33,9 @@ export default class Login extends Component {
     axios.post('https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/login', body, axiosConfig).then(
     res=> {​​​​​​​​console.log(res)}​​​​​​​​
     
-     ).catch(err=> {​​​​​​​​
+     ).catch(err => {​​​​​​​​
     console.log(err);
-     }​​​​​​​
+     })​​​​​​​
     }
 
   render() {
@@ -84,6 +84,7 @@ export default class Login extends Component {
           <button className="formFieldButton">Login</button>{" "}
         </form>
       </div>
-    );
-  }
+    )
+  };
+}
 }
