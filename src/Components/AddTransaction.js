@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 
 //start of varaibles used for testing
 const givenXApiKey = 'HGaEmsRTs92KWV1ymCFucerRBGYDzr52rtR3Wpg0';
@@ -6,7 +6,13 @@ const givenCustID = 4 ;
 const givenAccountKey = "lzdsqj5s-zqwh-m0hr-rrfz-3cvbsqb33m2";
 const url = "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/add"
 //end of variables used for testing
-var inputPayeeID,inputExpenseCat,inputPayeeID,inputExpenseCat,inputAmount,inputEGift,inputMessage;
+var inputPayeeID;
+var inputExpenseCat;
+var inputPayeeID;
+var inputExpenseCat;
+var inputAmount;
+var inputEGift=false;
+var inputMessage;
 
 async function makeTransaction() {
   const response = await fetch(url, {
@@ -17,11 +23,11 @@ async function makeTransaction() {
   body: JSON.stringify({
       custID: givenCustID ,
       accountKey: givenAccountKey,
-      payeeID: inputPayeeID,
-      expenseCat: inputExpenseCat,
-      amount: inputAmount,
-      eGift: inputEGift,
-      message: inputMessage
+      payeeID: window.inputPayeeID,
+      expenseCat: window.inputExpenseCat,
+      amount: window.inputAmount,
+      eGift: window.inputEGift,
+      message: window.inputMessage
   })
   }).then(response => {
   if (response.ok) {
@@ -50,7 +56,7 @@ export default class AddTransactionPage extends Component {
                 type="number"
                 className="form-control"
                 placeholder="Number to pay to"
-                onChange={(e) => (this.inputPayeeID = e.target.value)}
+                onChange={(e) => (window.inputPayeeID = e.target.value)}
               />
             </div>
   
@@ -60,7 +66,7 @@ export default class AddTransactionPage extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Expense type"
-                onChange={(e) => (this.inputExpenseCat = e.target.value)}
+                onChange={(e) => (window.inputExpenseCat = e.target.value)}
               />
             </div>
 
@@ -69,17 +75,17 @@ export default class AddTransactionPage extends Component {
               <input
                 type="number"
                 className="form-control"
-                placeholder="Amount"
-                onChange={(e) => (this.inputAmount = e.target.value)}
+                placeholder="Amount (in number)"
+                onChange={(e) => (window.inputAmount = e.target.value)}
               />
             </div>
             <div className="form-group">
+              
               <label>eGift</label>
               <input
                 type="checkbox"
                 className="form-control"
-                placeholder="Amount"
-                onChange={(e) => (this.inputEGift = e.target.value)}
+                onChange={(e) => (e.target.value? inputEGift=true:inputEGift=false)}
               />
             </div>
             <div className="form-group">
@@ -88,7 +94,7 @@ export default class AddTransactionPage extends Component {
                 type="Text"
                 className="form-control"
                 placeholder="Message to recipient"
-                onChange={(e) => (this.inputMessage = e.target.value)}
+                onChange={(e) => (window.inputMessage = e.target.value)}
               />
             </div>
             <button className="btn btn-primary btn-block">Pay</button>
