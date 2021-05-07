@@ -6,32 +6,30 @@ import {useEffect, useState} from "react";
 //   return d.getDate
 // }
 
-function CashSent(transactions){
-  let cashOut = 0.0;
-  transactions.forEach(transaction => {
-    if(transaction.payeeID === 4){
-      cashOut += transaction.amount;
-    }
-  });
-  console.log("Cash Out: ",cashOut);
-  return cashOut;
-}
+// function CashSent(transactions){
+//   let cashOut = 0.0;
+//   transactions.forEach(transaction => {
+//     if(transaction.payeeID === 4){
+//       cashOut += transaction.amount;
+//     }
+//   });
+//   console.log("Cash Out: ",cashOut);
+//   return cashOut;
+// }
 
-function CashRcvd(transactions){
-  let cashIn = 0.0;
-  transactions.forEach(transaction => {
-    if(transaction.payeeID != 4){
-      cashIn += transaction.amount;
-    }
-  });
-  console.log("Cash In", cashIn);
-  return cashIn;
-}
+// function CashRcvd(transactions){
+//   let cashIn = 0.0;
+//   transactions.forEach(transaction => {
+//     if(transaction.payeeID != 4){
+//       cashIn += transaction.amount;
+//     }
+//   });
+//   console.log("Cash In", cashIn);
+//   return cashIn;
+// }
 
 function GetTransaction() {
   const [transactions, setTransactions] = useState("");
-  
-  let listItems;
 
   useEffect(() => {
   const requestOptions = {
@@ -51,34 +49,73 @@ function GetTransaction() {
   .catch(console.error);
 
   }, []);
+  if(transactions){
+    console.log("API Called Succesfully");
+  }
+  return transactions;
+}
 
-  let cashIn = CashRcvd(transactions);
-  let cashOut = CashSent(transactions);
-
+function TransactionList(){
+  let listItems;
+  const transactions = GetTransaction();
   if(transactions) {
+    // if(transaction.payeeID === 4){
+    //   transaction.type = "Out";
+    // }
+    // else{
+    //   transaction.type = "In";
+    // }
     listItems = transactions.map((transaction) => 
       <li key="{transaction.datetime}" className="transaction-item">
         <div>Date: {transaction.datetime}</div>
         <div>Amount: ${transaction.amount}</div>
         <div>Message: {transaction.message}</div>
         <div>Expense Category: {transaction.expenseCat}</div>
-        <div>Payee ID: {transaction.payeeID}</div><br></br>
+        <div>Payee ID: {transaction.payeeID}</div>
+        <br></br>
       </li>
     )
-
     return listItems;
     }
-  return null;
+    else {
+      return console.error;
+    }
+}
+
+function TransAnal(){
+  let cashOut = 0.0;
+  let cashIn = 0.0;
+  const transactions = GetTransaction();
+  console.log(cashIn,cashOut);
+
+  for (const transaction of transactions){
+    if(transaction.payeeID === 4){
+          cashOut += transaction.amount;
+        }
+        else{
+          cashIn += transaction.amount;
+        }
+  }
+
+  console.log(cashIn,cashOut);
+  return (
+    <div>
+      Cash Sent: {cashOut}<br></br>
+      Cash Received: {cashIn}
+    </div>
+  )
 }
 
 function ViewTransaction() {
+  GetTransaction();
   return (
     <div className="Transactions">
       <div className="TransAnalytics">
+        <TransAnal/>
       </div>
       <div className="Transactions">
         <ul>
-          <GetTransaction />
+          <TransactionList/>
         </ul>
       </div>
     </div>
