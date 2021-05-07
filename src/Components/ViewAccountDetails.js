@@ -162,7 +162,7 @@ const ViewAccountDetails = () =>
                         }
                     }
                     >
-                    <div key="AccountDetailsMainBody"
+                    <div
                         onClick = {
                             () => Click(info)
                     }>
@@ -172,17 +172,17 @@ const ViewAccountDetails = () =>
                                 marginBottom : 2 }}>{info.accountName}</p>
                     <i style = {{fontSize : 14,
                                 marginBottom : 2}}>{info.accountNumber}</i><br/>
-                    <div key="leftAccInfo" style = {{fontSize : 10,
+                    <div style = {{fontSize : 10,
                                 float : "left",
                                 paddingTop : 5,
                                 marginRight : 5}}>SGD</div>
-                    <div key="rightAccInfo" style = {{fontSize : 15}}>{info.availableBal}</div>
+                    <div style = {{fontSize : 15}}>{info.availableBal}</div>
 
                     {
                         //Displaying History
                         info.display ? 
                         (
-                        <div key="DisplayingHistory">
+                        <div>
                             <hr/>
                             <p style = {{fontWeight : 200,
                                     fontSize : 15,
@@ -205,14 +205,14 @@ const ViewAccountDetails = () =>
                             {
                                 transactionHistory.map((th) => (
                                     th.Account === info.accountName ? (
-                                        <div>
-                                            <div key="thLeft" style = {{
+                                        <div key = "TransactionHistoryContainer">
+                                            <div style = {{
                                                 fontSize : 14,
                                                 margin : 0,
                                                 marginBottom : 2,
                                                 float : "left" }}>{th.Date}</div>
 
-                                            <div key="thRight" style = {{
+                                            <div style = {{
                                                 fontSize : 14,
                                                 margin : 0,
                                                 marginBottom : 2,
@@ -230,7 +230,7 @@ const ViewAccountDetails = () =>
                     </div>
                     
                     {/*Button to transit to different pages*/}
-                    <div key="accountDetailsButtons" style = {{marginBottom : 30}}>
+                    <div style = {{marginBottom : 30}}>
                         <button style = {{
                             marginTop : 10,
                             marginBottom : 10,
