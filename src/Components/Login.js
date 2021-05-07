@@ -16,31 +16,27 @@ export default class Login extends Component {
         console.log("Match");
       }
     });
-
-    const xApiKey='mcOtxKkyOR4OwrbGK0Czq8HRmlMcsQ2G1Er2jfy7';
-    const axiosConfig= {​​​​​​​​
-     headers: {​​​​​​​​
+    
+    componentDidMount(){
+    const xApiKey='HGaEmsRTs92KWV1ymCFucerRBGYDzr52rtR3Wpg0';
+    const axiosConfig = {​​​​​​​​
+      headers: {​​​​​​​​
     'x-api-key': xApiKey
-     }​​​​​​​​
-    
-    
-     }​​​​​​​​
+     }​​​​​​,
+    };
+     ​​​​​​​​
     const body={​​​​​​​​
     'username': "Group4",
-    'password': "RDVdlFcb2W3H3i_"
-    
-     }​​​​​​​​
+    'password': "2dWa&s5LS4OVlRD"
+     }
+     ​​​​​​​​
     axios.post('https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/login', body, axiosConfig).then(
-    res=> {​​​​​​​​
-    console.log(res)
-     }​​​​​​​​
+    res=> {​​​​​​​​console.log(res)}​​​​​​​​
     
-     ).catch(
-    err=> {​​​​​​​​
+     ).catch(err=> {​​​​​​​​
     console.log(err);
      }​​​​​​​
-  }
-
+    }
 
   render() {
     return (
@@ -66,7 +62,7 @@ export default class Login extends Component {
             <input
               type="password"
               id="password"
-              className="formFieldLable"
+              className="formFieldLabel"
               name="password"
               placeholder="Enter your password"
               onChange={(e) => (this.password = e.target.value)}
