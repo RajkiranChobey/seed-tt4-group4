@@ -77,7 +77,7 @@ export default class AddTransactionPage extends Component {
               <input
                 type="checkbox"
                 className="form-control"
-                placeholder="Amount (no $)"
+                placeholder="Amount"
                 onChange={(e) => (this.inputEGift = e.target.value)}
               />
             </div>
