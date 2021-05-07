@@ -13,7 +13,7 @@ const ViewAccountDetails = () =>
         {
             "Account" : "Multiplier Account",
             "Date" : "27-04-2021",
-            "Amount" : -80.00
+            "Amount" : 80.00
         },
         {
             "Account" : "Saving Account",
@@ -21,6 +21,7 @@ const ViewAccountDetails = () =>
             "Amount" : 70.00
         }
     ]);
+    const [testTransactionHistory, setTestTransactionHistory] = useState([]);
     
     //On Click function
     var display = false;
@@ -53,22 +54,51 @@ const ViewAccountDetails = () =>
         setRetrieveInfo(data);
     }
 
+    //Inputting the data to fetch the information
+    /*
+    const fetchHistory = async () => 
+    {
+        const res = await fetch('https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/view',
+        {
+            method: 'POST',
+            headers : {'x-api-key' : 'HGaEmsRTs92KWV1ymCFucerRBGYDzr52rtR3Wpg0'},
+            body : JSON.stringify({'custID' : custID,
+                                    'accountKey' : accountKey})
+        });
+
+        const thdata = await res.json();
+        console.log(thdata);
+        setTestTransactionHistory(thdata);
+    }
+    */
+
     useEffect (() => 
         {
             //Call to fetch the data
             fetchData();
+            //fetchHistory();
 
             //Set a display boolean for our displaying purposes
             retrievedInfo.map((info) => (
                 info["display"] = false
             ))
-            console.log(retrievedInfo);
         }, []
     )
 
     //Display in HTML
     return (
     <>
+        {/*This is currently hardcoded but can be changed to display current logged in user*/}
+        <h1 style = {
+            {marginLeft : 10}
+        }>Hello Robert Doston</h1>
+
+        <hr/>
+
+        <h2 style = {
+            {marginLeft : 10}
+        }>Account Details</h2>
+
         {
             //Loop through the array using Javascript map() function
             retrievedInfo.map((info) => (
@@ -88,6 +118,7 @@ const ViewAccountDetails = () =>
                             width : 400,
                         }
                      }
+                     
                      onClick = {
                          () => Click(info)
                      }>
@@ -124,9 +155,9 @@ const ViewAccountDetails = () =>
                                     margin : 0,
                                     marginBottom : 2,
                                     float : "right" }}>Amount</b>
-                            
                             <br/>
 
+                            {/*Change here to accomodate the data from database*/}
                             {
                                 transactionHistory.map((th) => (
                                     th.Account === info.accountName ? (
@@ -141,8 +172,7 @@ const ViewAccountDetails = () =>
                                                 fontSize : 14,
                                                 margin : 0,
                                                 marginBottom : 2,
-                                                float : "right" }}> {th.Amount > 0 ? ('+') : ('-')} ${th.Amount < 0 ? -th.Amount : th.Amount}</div>
-
+                                                float : "right" }}>${th.Amount}</div>
                                             <br/>
                                         </div>
                                      ) : (" ")
