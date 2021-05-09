@@ -25,6 +25,7 @@ function GetTransaction() {
   if(transactions){
     console.log("API Called Succesfully");
   }
+  transactions.sort((a, b) => (a.datetime > b.datetime) ? 1 : -1);
   return transactions;
 }
 
